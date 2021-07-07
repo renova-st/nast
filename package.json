@@ -1,0 +1,33 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "nast": "file:libs/nast",
+    "nast-api": "file:libs/nast-api",
+    "nast-auth": "file:libs/nast-auth",
+    "nast-form": "file:libs/nast-form",
+    "nast-router": "file:libs/nast-router",
+    "nast-store": "file:libs/nast-store",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.2",
+    "vuex": "^3.6.2",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "^4.5.13",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  }
+}

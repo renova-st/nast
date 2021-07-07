@@ -1,0 +1,28 @@
+{
+  "name": "nast-ui",
+  "version": "0.4.15",
+  "description": "UI framework using Vue.js",
+  "author": {
+    "name": "Alexey",
+    "email": "alexey@renova.st"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/alex-nova/nast-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-nova/nast-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alex-nova/nast-ui/issues"
+  },
+  "scripts": {},
+  "main": "index.js",
+  "dependencies": {
+    "dragula": "^3.7.2",
+    "lodash": "^4.*",
+    "sortablejs": "^1.10.1"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.*"
+  }
+}

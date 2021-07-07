@@ -1,0 +1,34 @@
+{
+  "name": "nast-auth",
+  "version": "1.0.1",
+  "description": "Library for fast coding.",
+  "keywords": [
+    "library",
+    "auth",
+    "authorithation",
+    "authentication",
+    "login",
+    "token",
+    "jwt"
+  ],
+  "author": {
+    "name": "Alexey",
+    "email": "alexey@renova.st"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/renova-st/nast#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renova-st/nast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/renova-st/nast/issues"
+  },
+  "main": "index.js",
+  "module": "src/index.js",
+  "scripts": {},
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "nast": "^1.0.2"
+  }
+}

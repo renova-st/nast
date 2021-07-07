@@ -1,0 +1,32 @@
+{
+  "name": "nast-store",
+  "version": "1.0.3",
+  "description": "Library for managing vuex.",
+  "keywords": [
+    "vue",
+    "vuex",
+    "store"
+  ],
+  "author": {
+    "name": "Alexey",
+    "email": "alexey@renova.st"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/renova-st/nast#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renova-st/nast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/renova-st/nast/issues"
+  },
+  "main": "index.js",
+  "module": "src/index.js",
+  "scripts": {},
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "nast": "^1.0.2",
+    "vuex": "^3.6.2",
+    "vuex-persist": "^3.1.3"
+  }
+}
