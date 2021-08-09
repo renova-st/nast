@@ -1,1 +1,166 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("vue"),require("lodash/get"),require("lodash/map"),require("lodash/reduce"),require("lodash/isFunction"),require("nast-router"),require("nast-store")):"function"==typeof define&&define.amd?define(["vue","lodash/get","lodash/map","lodash/reduce","lodash/isFunction","nast-router","nast-store"],t):"object"==typeof exports?exports.nast=t(require("vue"),require("lodash/get"),require("lodash/map"),require("lodash/reduce"),require("lodash/isFunction"),require("nast-router"),require("nast-store")):e.nast=t(e.vue,e["lodash/get"],e["lodash/map"],e["lodash/reduce"],e["lodash/isFunction"],e["nast-router"],e["nast-store"])}(self,(function(e,t,r,n,o,i,s){return function(){"use strict";var u={566:function(e){e.exports=t},170:function(e){e.exports=o},403:function(e){e.exports=r},355:function(e){e.exports=n},435:function(e){e.exports=i},37:function(e){e.exports=s},103:function(t){t.exports=e}},a={};function c(e){var t=a[e];if(void 0!==t)return t.exports;var r=a[e]={exports:{}};return u[e](r,r.exports,c),r.exports}c.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return c.d(t,{a:t}),t},c.d=function(e,t){for(var r in t)c.o(t,r)&&!c.o(e,r)&&Object.defineProperty(e,r,{enumerable:!0,get:t[r]})},c.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),c.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},c.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var p={};return function(){c.r(p),c.d(p,{NastLib:function(){return m},default:function(){return b}});var e=c(103),t=c.n(e),r=c(566),n=c.n(r),o=c(403),i=c.n(o),s=c(355),u=c.n(s),a=c(170),f=c.n(a),l=c(435),d=c.n(l),g=c(37),h=c.n(g);class m{static _defaultConfig={};_userConfig={};constructor(e={}){this._userConfig=e}static store(e={}){return{}}static vue(){return{}}_config(e,t){return n()(this._userConfig||{},e,this.constructor._defaultConfig[e])}static _config(e,t){return n()(t,e,this._defaultConfig[e])}}class b extends m{static _defaultConfig={};static createApp(e,r={}){r.store||(r.store={NastStore:h()}),r.router||(r.router={NastRouter:d()}),c.g.$env=(t,r)=>n()(e.env||{},t,r),c.g.$config=(t,r)=>n()(e.config?e.config():{},t,r),c.g.$n=e.fn?e.fn():{},c.g.$api=e.api?.RestApi?new e.api.RestApi:{};const o={...e.stores||{},...this._getLibsStores(r)},s=new r.store.NastStore(t(),o,$config("store")),u=new r.router.NastRouter(t(),e.routes,s.store(),$config("router"));return c.g.$app={store:s,router:u,api:r.api?new r.api.NastApi(r.api.RequestBuilder,$config("api")):{},auth:r.auth?new r.auth.NastAuth(s.store(),u.router(),$config("auth")):{},date:r.date?new r.date.NastDate($config("date")):{},form:r.form?new r.form.NastForm($config("form")):{},secure:r.secure?new r.secure.NastSecure($config("secure")):{}},t().mixin({computed:{$env:()=>$env,$config:()=>$config,$n:()=>$n,$api:()=>$api,$app:()=>$app}}),i()(this._getLibsPlugins(r),((e,r)=>{e&&t().use(e,$config(r))})),new(t())({router:u.router(),store:s.store(),render:e=>e(this._appVue())}).$mount("#app")}static _getLibsStores(e){return u()(e,((e,t,r)=>{const n=t["Nast"+r.charAt(0).toLocaleUpperCase()+r.slice(1)].store;return f()(n)&&(e[r]=n($config(r))),e}),{})}static _getLibsPlugins(e){return u()(e,((e,t,r)=>{const n=t["Nast"+r.charAt(0).toLocaleUpperCase()+r.slice(1)].vue;return f()(n)&&(e[r]=n()),e}),{})}static _appVue(){return{name:"App",html:()=>({meta:[{charset:"utf-8"},{name:"mobile-web-app-capable",content:"yes"},{name:"apple-mobile-web-app-capable",content:"yes"},{name:"apple-mobile-web-app-status-bar-style",content:"default"},{name:"viewport",content:"width=device-width, initial-scale=1, minimal-ui"}],link:[],htmlAttrs:{lang:"ru"}}),mounted(){},render:e=>e("div",{attrs:{id:"app"}},[e("router-view")])}}}}(),p}()}));
+import Vue from 'vue'
+import get from 'lodash/get'
+import map from 'lodash/map'
+import reduce from 'lodash/reduce'
+import isFunction from 'lodash/isFunction'
+import NastRouter from 'nast-router'
+import NastStore from 'nast-store'
+import NastLib from './Lib'
+
+/**
+ *
+ */
+export default class NastCore extends NastLib {
+  /**
+   * @type {Object}
+   * @protected
+   */
+  static _defaultConfig = {}
+  
+  /**
+   * @param {Object} settings
+   * @param {Object} libs
+   * @return {this}
+   */
+  static createApp(settings, libs = {}) {
+    if (!libs.store) libs.store = { NastStore, }
+    if (!libs.router) libs.router = { NastRouter, }
+    console.log(settings.env)
+    return ''
+    global.$env = (key, def) => get(settings.env || {}, key, def)
+    global.$config = (key, def) => get(settings.config ? settings.config() : {}, key, def)
+    global.$n = settings.fn ? settings.fn() : {}
+    /** @var {RestApi} */
+    global.$api = settings.api?.RestApi ? new (settings.api.RestApi)() : {}
+
+    const allStores = {
+      ...(settings.stores || {}),
+      ...this._getLibsStores(libs),
+    }
+    const store = new libs.store.NastStore(Vue, allStores, $config('store'))
+    const router = new libs.router.NastRouter(Vue, settings.routes, store.store(), $config('router'))
+    
+    // Globals
+    global.$app = {
+      store,
+      router,
+      api: libs.api ? new (libs.api.NastApi)(libs.api.RequestBuilder, $config('api')) : {},
+      auth: libs.auth ? new (libs.auth.NastAuth)(store.store(), router.router(), $config('auth')) : {},
+      date: libs.date ? new (libs.date.NastDate)($config('date')) : {},
+      form: libs.form ? new (libs.form.NastForm)($config('form')) : {},
+      secure: libs.secure ? new (libs.secure.NastSecure)($config('secure')) : {},
+    }
+    // end Globals
+  
+    Vue.mixin({
+      computed: {
+        $env() {
+          return $env
+        },
+        $config() {
+          return $config
+        },
+        $n() {
+          return $n
+        },
+        $api() {
+          return $api
+        },
+        $app() {
+          return $app
+        },
+      },
+    })
+    map(this._getLibsPlugins(libs), (plugin, name) => {
+      if (plugin) {
+        Vue.use(plugin, $config(name))
+      }
+    })
+
+    return new Vue({
+      router: router.router(),
+      store: store.store(),
+      render: (h) => h(this._appVue()),
+    }).$mount('#app')
+  }
+  
+  
+  /**
+   * Вызывает функцию store() в каждой библиотеке и возвращает объектом
+   * @param {Object} libs
+   * @return {Object}
+   * @protected
+   */
+  static _getLibsStores(libs) {
+    return reduce(libs, (result, lib, name) => {
+      const func = lib['Nast' + name.charAt(0).toLocaleUpperCase() + name.slice(1)].store
+      if (isFunction(func)) {
+        result[name] = func($config(name))
+      }
+      return result
+    }, {})
+  }
+  
+  /**
+   * Достает функцию vue из каждой библиотеки
+   * @param {Object} libs
+   * @return {Object}
+   * @protected
+   */
+  static _getLibsPlugins(libs) {
+    return reduce(libs, (result, lib, name) => {
+      const func = lib['Nast' + name.charAt(0).toLocaleUpperCase() + name.slice(1)].vue
+      if (isFunction(func)) {
+        result[name] = func()
+      }
+      return result
+    }, {})
+  }
+  
+  /**
+   * @return {Object}
+   * @protected
+   */
+  static _appVue() {
+    return {
+      name: 'App',
+      html() {
+        const meta = {
+          meta: [
+            { charset: 'utf-8', },
+            { name: 'mobile-web-app-capable', content: 'yes', },
+            { name: 'apple-mobile-web-app-capable', content: 'yes', },
+            { name: 'apple-mobile-web-app-status-bar-style', content: 'default', },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1, minimal-ui', },
+          ],
+          link: [
+            // { rel: 'apple-touch-icon', sizes: '120x120', href: `${$config('app.baseUrl')}assets/static/120.png`, },
+            // { rel: 'shortcut icon', sizes: '48x48', href: `${$config('app.baseUrl')}assets/static/48.png`, },
+          ],
+          htmlAttrs: {
+            lang: 'ru',
+          },
+        }
+        
+        // if ($config('app.manifest.use')) {
+        //   meta.link.push({ rel: 'manifest', href: `${$config('app.baseUrl')}assets/static/manifest.json`, })
+        // }
+        
+        return meta
+      },
+      // props: [ 'libs', ],
+      mounted() {
+        // this.libs.data.loazdData(this.$router, this.$route)
+      },
+      render(h) {
+        return h('div', { attrs: { id: 'app', }, }, [
+          h('router-view'),
+        ])
+      },
+    }
+  }
+}
+
+export {
+  NastLib,
+}

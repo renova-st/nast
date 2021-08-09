@@ -1,12 +1,12 @@
 # nast-store
 
-### Installation
+## Installation
+```
+npm i -S nast-store
+```
 
-<pre><code>npm i -S nast-store</code></pre>
-
-### Prepare
-
-<pre><code>
+## Prepare
+```
 import NastStore from 'nast-store'
 import Vue from 'vue'
 import App from './App'
@@ -35,15 +35,14 @@ new Vue({
   store: store.store(),
   render: (h) => h(App),
 }).$mount('#app')
-</code></pre>
+```
 
-### Basic usage
-
-<pre><code>
+## Basic usage
+```
 $app.store.mutation('app.user', {
   username: 'admin',
   fullName: 'Administrator',
 })
 
 $app.store.state('app.user').fullName
-</code></pre>
+```

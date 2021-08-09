@@ -1,6 +1,6 @@
 {
   "name": "nast-api",
-  "version": "1.0.8",
+  "version": "1.0.29",
   "description": "Library for building api requests.",
   "keywords": [
     "request",
@@ -25,12 +25,10 @@
   "bugs": {
     "url": "https://github.com/renova-st/nast/issues"
   },
-  "main": "index.js",
-  "module": "src/index.js",
   "scripts": {},
   "dependencies": {
-    "axios": "^0.21.1",
-    "lodash": "^4.17.21",
-    "nast": "^1.0.2"
+    "axios": "^0.21.*",
+    "lodash": "^4.17.*",
+    "nast": "^1.0.*"
   }
 }

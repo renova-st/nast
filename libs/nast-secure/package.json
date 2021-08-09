@@ -1,0 +1,25 @@
+{
+  "name": "nast-helpers",
+  "version": "1.0.1",
+  "description": "Helpers for a fast codding",
+  "keywords": [
+    "vue",
+    "library",
+    "helpers"
+  ],
+  "author": {
+    "name": "Alexey",
+    "email": "alexey@renova.st"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/renova-st/nast#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renova-st/nast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/renova-st/nast/issues"
+  },
+  "scripts": {},
+  "dependencies": {}
+}

@@ -1,4 +1,3 @@
-// const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   publicPath: '/',
@@ -15,7 +14,11 @@ module.exports = {
       .modules.add('app')
     config.resolve
       .modules.add('modules')
-    
-    // config.plugin('dotenv').use(Dotenv)
+
+    config.module
+      .rule('raw')
+      .test(/\.env$/)
+      .use('raw')
+      .loader('raw-loader')
   },
 }

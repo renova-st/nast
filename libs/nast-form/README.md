@@ -1,26 +1,25 @@
 # nast-form
 
-### Installation
+## Installation
+```
+npm i -S nast-form
+```
 
-<pre><code>npm i -S nast-form</code></pre>
-
-### Prepare
-
-<pre><code>
-import NastForm from 'nast-form'
+## Prepare
+```
 import Vue from 'vue'
 import App from './App'
+import NastForm from 'nast-form'
 
 Vue.use(NastForm.vue(), {})
 
 new Vue({
   render: (h) => h(App),
 }).$mount('#app')
-</code></pre>
+```
 
-### Basic usage
-
-<pre><code>
+## Basic usage
+```
 &lt;div id=&quot;app&quot;&gt;
 &lt;form @submit.prevent=&quot;submit&quot;&gt;
   {{ $form.errors() }}
@@ -53,4 +52,4 @@ export default {
     },
   },
 }
-</code></pre>
+```

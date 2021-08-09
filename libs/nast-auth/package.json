@@ -1,6 +1,6 @@
 {
   "name": "nast-auth",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "Library for fast coding.",
   "keywords": [
     "library",
@@ -24,11 +24,9 @@
   "bugs": {
     "url": "https://github.com/renova-st/nast/issues"
   },
-  "main": "index.js",
-  "module": "src/index.js",
   "scripts": {},
   "dependencies": {
-    "lodash": "^4.17.21",
-    "nast": "^1.0.2"
+    "lodash": "^4.17.*",
+    "nast": "^1.0.*"
   }
 }

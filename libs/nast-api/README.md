@@ -1,12 +1,12 @@
 # nast-api
 
-### Installation
+## Installation
+```
+npm i -S nast-api</code></pre>
+```
 
-<pre><code>npm i -S nast-api</code></pre>
-
-### Basic usage
-
-<pre><code>
+## Basic usage
+```
 import Api, { RequestBuilder, } from 'nast-api'
 
 const api = new Api(RequestBuilder, {})
@@ -14,11 +14,10 @@ const api = new Api(RequestBuilder, {})
 api.get('localhost/api/users').then((request) => {
   //
 })
-</code></pre>
+```
 
-### Config
-
-<pre><code>
+## Config
+```
 const api = new Api(RequestBuilder, {
   servers: {
     default: 'http://127.0.0.1:8000/api/',
@@ -29,11 +28,10 @@ const api = new Api(RequestBuilder, {
   },
   finally: () => {},
 })
-</code></pre>
+```
 
-### Example
-
-<pre><code>
+## Example
+```
 api.get('users')
   .page(2)
   .size(20)
@@ -51,5 +49,4 @@ api.get('users')
   }).catch((error) => {
     console.log(e)
   })
-  
-</code></pre>
+```

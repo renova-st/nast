@@ -1,11 +1,12 @@
 # nast-router
 
-### Installation
+## Installation
+```
+npm i -S nast-router
+```
 
-<pre><code>npm i -S nast-router</code></pre>
-
-### Prepare
-<pre><code>
+## Prepare
+```
 import NastRouter from 'nast-router'
 import Vuex from 'vuex'
 import Vue from 'vue'
@@ -30,12 +31,10 @@ new Vue({
   store,
   render: (h) => h(App),
 }).$mount('#app')
+```
 
-</code></pre>
-
-### Basic use
-
-<pre><code>
+## Basic use
+```
 export default {
   name: 'About',
   data() {
@@ -49,4 +48,4 @@ export default {
     this.breadcrumbs = $app.router.breadcrumbs()
   },
 }
-</code></pre>
+```

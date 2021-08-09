@@ -1,1 +1,64 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e(require("lodash/get")):"function"==typeof define&&define.amd?define(["lodash/get"],e):"object"==typeof exports?exports.lib=e(require("lodash/get")):t.lib=e(t["lodash/get"])}(self,(function(t){return function(){"use strict";var e={566:function(e){e.exports=t}},r={};function o(t){var n=r[t];if(void 0!==n)return n.exports;var u=r[t]={exports:{}};return e[t](u,u.exports,o),u.exports}o.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return o.d(e,{a:e}),e},o.d=function(t,e){for(var r in e)o.o(e,r)&&!o.o(t,r)&&Object.defineProperty(t,r,{enumerable:!0,get:e[r]})},o.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},o.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})};var n={};return function(){o.r(n),o.d(n,{default:function(){return r}});var t=o(566),e=o.n(t);class r{static _defaultConfig={};_userConfig={};constructor(t={}){this._userConfig=t}static store(t={}){return{}}static vue(){return{}}_config(t,r){return e()(this._userConfig||{},t,this.constructor._defaultConfig[t])}static _config(t,r){return e()(r,t,this._defaultConfig[t])}}}(),n}()}));
+import get from 'lodash/get'
+
+/**
+ *
+ */
+export default class NastLib {
+  /**
+   * @type {Object}
+   * @protected
+   */
+  static _defaultConfig = {}
+  
+  /**
+   * @type {Object}
+   * @protected
+   */
+  _userConfig = {}
+  
+  /**
+   * @param {Object} config
+   */
+  constructor(config = {}) {
+    this._userConfig = config
+  }
+  
+  /**
+   * Returns store object for vuex
+   * @param {Object} config
+   * @return {Object}
+   */
+  static store(config = {}) {
+    return {}
+  }
+  
+  /**
+   * Returns plugin object for Vue.use
+   * @return {Object}
+   */
+  static vue() {
+    return {}
+  }
+  
+  /**
+   * Default config
+   * @param {string} key
+   * @param {Object} config
+   * @return {*}
+   * @protected
+   */
+  _config(key, config = undefined) {
+    return get(this._userConfig || {}, key, this.constructor._defaultConfig[key])
+  }
+  
+  /**
+   * Default config
+   * @param {string} key
+   * @param {Object} config
+   * @return {*}
+   * @protected
+   */
+  static _config(key, config) {
+    return get(config, key, this._defaultConfig[key])
+  }
+}

@@ -1,1 +1,160 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e(require("nast/Lib"),require("lodash/isString")):"function"==typeof define&&define.amd?define(["nast/Lib","lodash/isString"],e):"object"==typeof exports?exports["nast-auth"]=e(require("nast/Lib"),require("lodash/isString")):t["nast-auth"]=e(t["nast/Lib"],t["lodash/isString"])}(self,(function(t,e){return function(){"use strict";var o={946:function(t){t.exports=e},441:function(e){e.exports=t}},r={};function n(t){var e=r[t];if(void 0!==e)return e.exports;var s=r[t]={exports:{}};return o[t](s,s.exports,n),s.exports}n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,{a:e}),e},n.d=function(t,e){for(var o in e)n.o(e,o)&&!n.o(t,o)&&Object.defineProperty(t,o,{enumerable:!0,get:e[o]})},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})};var s={};return function(){n.r(s),n.d(s,{default:function(){return i}});var t=n(441),e=n.n(t),o=n(946),r=n.n(o);class i extends(e()){static _defaultConfig={loginRoute:"login",authRoute:"index",apiAuth:t=>{}};_store;_router;constructor(t,e,o={}){super(o),this._store=t,this._router=e}init(){const t=JSON.parse(localStorage.getItem("auth")),e=t?.token,o=t?.user;e&&o&&this._store.commit("auth/login",{user:o,token:e}),this.loggedIn()&&this.apiLogin()}login(t,e){this._store.commit("auth/login",{user:t,token:e}),this.apiLogin()}loggedIn(){return Boolean(this._store.getters["auth/token"])}logout(){this._store.commit("auth/logout"),this.needAuth()}user(t){return t&&this._store.commit("auth/setUser",t),this._store.getters["auth/user"]}needAuth(t=!0){let e=this._config(t?"loginRoute":"authRoute");r()(e)&&(e={name:e}),(t&&!this.loggedIn()||!t&&this.loggedIn())&&this._router.push(e)}apiLogin(){this._config("apiAuth")(this._store.getters["auth/token"])}static store(t={}){return{namespaced:!0,state:{user:{},token:"",_save:["user","token"]},getters:{user:t=>t.user,token:t=>t.token},mutations:{login(t,{user:e,token:o}){t.user=e,t.token=o,localStorage.setItem("auth",JSON.stringify({user:e,token:o}))},logout(t){t.user=null,t.token="",localStorage.removeItem("auth")},setUser(t,e){t.user=e,localStorage.setItem("auth",JSON.stringify({user:e,token:t.token}))}}}}}}(),s}()}));
+import NastLib from 'nast/Lib'
+import isString from 'lodash/isString'
+
+/**
+ *
+ */
+export default class NastAuth extends NastLib {
+  /**
+   * @type {Object}
+   * @protected
+   */
+  static _defaultConfig = {
+    loginRoute: 'login',
+    authRoute: 'index',
+    apiAuth: (token) => {},
+  }
+  
+  /**
+   * @type {Vuex}
+   * @protected
+   */
+  _store
+  
+  /**
+   * @type {VueRouter}
+   * @protected
+   */
+  _router
+  
+  /**
+   * @param {Vuex} store
+   * @param {VueRouter} router
+   * @param {Object} config
+   */
+  constructor(store, router, config = {}) {
+    super(config)
+    
+    this._store = store
+    this._router = router
+  }
+  
+  /**
+   * Вызываем на старте приложения
+   */
+  init() {
+    const lsAuth = JSON.parse(localStorage.getItem('auth'))
+    const token = lsAuth?.token
+    const user = lsAuth?.user
+    if (token && user) {
+      this._store.commit('auth/login', { user, token, })
+    }
+
+    if (this.loggedIn()) {
+      this.apiLogin()
+    }
+  }
+  
+  /**
+   * @param {Object} user
+   * @param {string} token
+   * @param {boolean} redirect
+   */
+  login(user, token, redirect = true) {
+    this._store.commit('auth/login', { user, token, })
+    this.apiLogin()
+    if (redirect) {
+      this.needAuth(false)
+    }
+  }
+  
+  /**
+   * @return {boolean}
+   */
+  loggedIn() {
+    return Boolean(this._store.getters['auth/token'])
+  }
+  
+  /**
+   * @param {boolean} redirect
+   */
+  logout(redirect = true) {
+    this._store.commit('auth/logout')
+    if (redirect) {
+      this.needAuth()
+    }
+  }
+  
+  /**
+   * Получаем текущего юзера, если передан параметр - обновляем юзера
+   * @param {Object} user
+   * @return {Object}
+   */
+  user(user = undefined) {
+    if (user) {
+      this._store.commit('auth/setUser', user)
+    }
+    return this._store.getters['auth/user']
+  }
+  
+  /**
+   * @param {boolean} needAuth
+   */
+  needAuth(needAuth = true) {
+    let route = this._config(needAuth ? 'loginRoute' : 'authRoute')
+    if (isString(route)) {
+      route = { name: route, }
+    }
+
+    if ((needAuth && !this.loggedIn()) || (!needAuth && this.loggedIn())) {
+      this._router.push(route)
+    }
+  }
+  
+  /**
+   * Обновление/установка аутентификации в апи
+   */
+  apiLogin() {
+    this._config('apiAuth')(this._store.getters['auth/token'])
+  }
+  
+  /**
+   * Returns store object for vuex
+   * @param {Object} config
+   * @return {Object}
+   */
+  static store(config = {}) {
+    return {
+      namespaced: true,
+      state: {
+        user: {},
+        token: '',
+        _save: [ 'user', 'token', ],
+      },
+      getters: {
+        user: (state) => {
+          return state.user
+        },
+        token: (state) => {
+          return state.token
+        },
+      },
+      mutations: {
+        login(state, { user, token, }) {
+          state.user = user
+          state.token = token
+          localStorage.setItem('auth', JSON.stringify({ user, token, }))
+        },
+        logout(state) {
+          state.user = null
+          state.token = ''
+          localStorage.removeItem('auth')
+        },
+        setUser(state, user) {
+          state.user = user
+          localStorage.setItem('auth', JSON.stringify({ user, token: state.token, }))
+        },
+      },
+    }
+  }
+}

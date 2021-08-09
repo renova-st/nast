@@ -27,7 +27,9 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-renova": "^1.0.4",
     "eslint-plugin-vue": "^6.2.2",
+    "raw-loader": "^4.0.2",
     "vue-template-compiler": "^2.6.11"
   }
 }

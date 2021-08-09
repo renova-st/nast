@@ -1,12 +1,12 @@
 # nast-auth
 
-### Installation
+## Installation
+```
+npm i -S nast-auth
+```
 
-<pre><code>npm i -S nast-auth</code></pre>
-
-### Prepare
-
-<pre><code>
+## Prepare
+```
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
@@ -42,15 +42,14 @@ new Vue({
   router,
   render: (h) => h(App),
 }).$mount('#app')
-</code></pre>
+```
 
-### Basic usage
-
-<pre><code>
+## Basic usage
+```
 $app.auth.init() // load auth from localstorage
 $app.auth.login(user, token)
 $app.auth.needAuth(false) // redirect to index
 $app.auth.logout()
 $app.auth.needAuth(true) // redirect to login
 $app.auth.user() // get current user
-</code></pre>
+```

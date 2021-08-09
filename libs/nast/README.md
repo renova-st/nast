@@ -1,12 +1,12 @@
 # nast
 
-### Installation
+## Installation
+```
+npm i -S nast
+```
 
-<pre><code>npm i -S nast</code></pre>
-
-### Basic usage
-
-<pre><code>
+## Basic usage
+```
 import NastCore from 'nast'
 
 const settings = {
@@ -32,4 +32,4 @@ const settings = {
 }
 
 NastCore.createApp(settings)
-</code></pre>
+```

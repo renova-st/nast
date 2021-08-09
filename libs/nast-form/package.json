@@ -1,6 +1,6 @@
 {
   "name": "nast-form",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Library for manage forms.",
   "keywords": [
     "vue",
@@ -24,7 +24,7 @@
   "module": "src/index.js",
   "scripts": {},
   "dependencies": {
-    "lodash": "^4.17.21",
-    "nast": "^1.0.2"
+    "lodash": "^4.17.*",
+    "nast": "^1.0.*"
   }
 }

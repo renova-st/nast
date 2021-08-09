@@ -1,2 +1,260 @@
-/*! For license information please see index.js.LICENSE.txt */
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e(require("lodash/get"),require("lodash/reduce"),require("lodash/size"),require("nast/Lib")):"function"==typeof define&&define.amd?define(["lodash/get","lodash/reduce","lodash/size","nast/Lib"],e):"object"==typeof exports?exports["nast-store"]=e(require("lodash/get"),require("lodash/reduce"),require("lodash/size"),require("nast/Lib")):t["nast-store"]=e(t["lodash/get"],t["lodash/reduce"],t["lodash/size"],t["nast/Lib"])}(self,(function(t,e,r,n){return function(){"use strict";var i={827:function(t){var e=function(t){return function(t){return!!t&&"object"==typeof t}(t)&&!function(t){var e=Object.prototype.toString.call(t);return"[object RegExp]"===e||"[object Date]"===e||function(t){return t.$$typeof===r}(t)}(t)},r="function"==typeof Symbol&&Symbol.for?Symbol.for("react.element"):60103;function n(t,e){return!1!==e.clone&&e.isMergeableObject(t)?a((r=t,Array.isArray(r)?[]:{}),t,e):t;var r}function i(t,e,r){return t.concat(e).map((function(t){return n(t,r)}))}function o(t){return Object.keys(t).concat(function(t){return Object.getOwnPropertySymbols?Object.getOwnPropertySymbols(t).filter((function(e){return t.propertyIsEnumerable(e)})):[]}(t))}function s(t,e){try{return e in t}catch(t){return!1}}function a(t,r,u){(u=u||{}).arrayMerge=u.arrayMerge||i,u.isMergeableObject=u.isMergeableObject||e,u.cloneUnlessOtherwiseSpecified=n;var c=Array.isArray(r);return c===Array.isArray(t)?c?u.arrayMerge(t,r,u):function(t,e,r){var i={};return r.isMergeableObject(t)&&o(t).forEach((function(e){i[e]=n(t[e],r)})),o(e).forEach((function(o){(function(t,e){return s(t,e)&&!(Object.hasOwnProperty.call(t,e)&&Object.propertyIsEnumerable.call(t,e))})(t,o)||(s(t,o)&&r.isMergeableObject(e[o])?i[o]=function(t,e){if(!e.customMerge)return a;var r=e.customMerge(t);return"function"==typeof r?r:a}(o,r)(t[o],e[o],r):i[o]=n(e[o],r))})),i}(t,r,u):n(r,u)}a.all=function(t,e){if(!Array.isArray(t))throw new Error("first argument should be an array");return t.reduce((function(t,r){return a(t,r,e)}),{})};var u=a;t.exports=u},309:function(t,e){const{parse:r,stringify:n}=JSON,{keys:i}=Object,o=String,s="string",a={},u="object",c=(t,e)=>e,l=t=>t instanceof o?o(t):t,h=(t,e)=>typeof e===s?new o(e):e,f=(t,e,r,n)=>{const s=[];for(let c=i(r),{length:l}=c,h=0;h<l;h++){const i=c[h],l=r[i];if(l instanceof o){const o=t[l];typeof o!==u||e.has(o)?r[i]=n.call(r,i,o):(e.add(o),r[i]=a,s.push({k:i,a:[t,e,o,n]}))}else r[i]!==a&&(r[i]=n.call(r,i,l))}for(let{length:t}=s,e=0;e<t;e++){const{k:t,a:i}=s[e];r[t]=n.call(r,t,f.apply(null,i))}return r},p=(t,e,r)=>{const n=o(e.push(r)-1);return t.set(r,n),n},d=(t,e)=>{const n=r(t,h).map(l),i=n[0],o=e||c,s=typeof i===u&&i?f(n,new Set,i,o):i;return o.call({"":s},"",s)};e.parse=d;const m=(t,e,r)=>{const i=e&&typeof e===u?(t,r)=>""===t||-1<e.indexOf(t)?r:void 0:e||c,o=new Map,a=[],l=[];let h=+p(o,a,i.call({"":t},"",t)),f=!h;for(;h<a.length;)f=!0,l[h]=n(a[h++],d,r);return"["+l.join(",")+"]";function d(t,e){if(f)return f=!f,e;const r=i.call(this,t,e);switch(typeof r){case u:if(null===r)return r;case s:return o.get(r)||p(o,a,r)}return r}};e.stringify=m,e.toJSON=t=>r(m(t)),e.fromJSON=t=>d(n(t))},566:function(e){e.exports=t},355:function(t){t.exports=e},77:function(t){t.exports=r},441:function(t){t.exports=n}},o={};function s(t){var e=o[t];if(void 0!==e)return e.exports;var r=o[t]={exports:{}};return i[t](r,r.exports,s),r.exports}s.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return s.d(e,{a:e}),e},s.d=function(t,e){for(var r in e)s.o(e,r)&&!s.o(t,r)&&Object.defineProperty(t,r,{enumerable:!0,get:e[r]})},s.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(t){if("object"==typeof window)return window}}(),s.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},s.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})};var a={};return function(){s.r(a),s.d(a,{default:function(){return Q}});var t=("undefined"!=typeof window?window:void 0!==s.g?s.g:{}).__VUE_DEVTOOLS_GLOBAL_HOOK__;function e(t,r){if(void 0===r&&(r=[]),null===t||"object"!=typeof t)return t;var n,i=(n=function(e){return e.original===t},r.filter(n)[0]);if(i)return i.copy;var o=Array.isArray(t)?[]:{};return r.push({original:t,copy:o}),Object.keys(t).forEach((function(n){o[n]=e(t[n],r)})),o}function r(t,e){Object.keys(t).forEach((function(r){return e(t[r],r)}))}function n(t){return null!==t&&"object"==typeof t}var i=function(t,e){this.runtime=e,this._children=Object.create(null),this._rawModule=t;var r=t.state;this.state=("function"==typeof r?r():r)||{}},o={namespaced:{configurable:!0}};o.namespaced.get=function(){return!!this._rawModule.namespaced},i.prototype.addChild=function(t,e){this._children[t]=e},i.prototype.removeChild=function(t){delete this._children[t]},i.prototype.getChild=function(t){return this._children[t]},i.prototype.hasChild=function(t){return t in this._children},i.prototype.update=function(t){this._rawModule.namespaced=t.namespaced,t.actions&&(this._rawModule.actions=t.actions),t.mutations&&(this._rawModule.mutations=t.mutations),t.getters&&(this._rawModule.getters=t.getters)},i.prototype.forEachChild=function(t){r(this._children,t)},i.prototype.forEachGetter=function(t){this._rawModule.getters&&r(this._rawModule.getters,t)},i.prototype.forEachAction=function(t){this._rawModule.actions&&r(this._rawModule.actions,t)},i.prototype.forEachMutation=function(t){this._rawModule.mutations&&r(this._rawModule.mutations,t)},Object.defineProperties(i.prototype,o);var u,c=function(t){this.register([],t,!1)};function l(t,e,r){if(e.update(r),r.modules)for(var n in r.modules){if(!e.getChild(n))return;l(t.concat(n),e.getChild(n),r.modules[n])}}c.prototype.get=function(t){return t.reduce((function(t,e){return t.getChild(e)}),this.root)},c.prototype.getNamespace=function(t){var e=this.root;return t.reduce((function(t,r){return t+((e=e.getChild(r)).namespaced?r+"/":"")}),"")},c.prototype.update=function(t){l([],this.root,t)},c.prototype.register=function(t,e,n){var o=this;void 0===n&&(n=!0);var s=new i(e,n);0===t.length?this.root=s:this.get(t.slice(0,-1)).addChild(t[t.length-1],s),e.modules&&r(e.modules,(function(e,r){o.register(t.concat(r),e,n)}))},c.prototype.unregister=function(t){var e=this.get(t.slice(0,-1)),r=t[t.length-1],n=e.getChild(r);n&&n.runtime&&e.removeChild(r)},c.prototype.isRegistered=function(t){var e=this.get(t.slice(0,-1)),r=t[t.length-1];return!!e&&e.hasChild(r)};var h=function(e){var r=this;void 0===e&&(e={}),!u&&"undefined"!=typeof window&&window.Vue&&_(window.Vue);var n=e.plugins;void 0===n&&(n=[]);var i=e.strict;void 0===i&&(i=!1),this._committing=!1,this._actions=Object.create(null),this._actionSubscribers=[],this._mutations=Object.create(null),this._wrappedGetters=Object.create(null),this._modules=new c(e),this._modulesNamespaceMap=Object.create(null),this._subscribers=[],this._watcherVM=new u,this._makeLocalGettersCache=Object.create(null);var o=this,s=this.dispatch,a=this.commit;this.dispatch=function(t,e){return s.call(o,t,e)},this.commit=function(t,e,r){return a.call(o,t,e,r)},this.strict=i;var l=this._modules.root.state;g(this,l,[],this._modules.root),m(this,l),n.forEach((function(t){return t(r)})),(void 0!==e.devtools?e.devtools:u.config.devtools)&&function(e){t&&(e._devtoolHook=t,t.emit("vuex:init",e),t.on("vuex:travel-to-state",(function(t){e.replaceState(t)})),e.subscribe((function(e,r){t.emit("vuex:mutation",e,r)}),{prepend:!0}),e.subscribeAction((function(e,r){t.emit("vuex:action",e,r)}),{prepend:!0}))}(this)},f={state:{configurable:!0}};function p(t,e,r){return e.indexOf(t)<0&&(r&&r.prepend?e.unshift(t):e.push(t)),function(){var r=e.indexOf(t);r>-1&&e.splice(r,1)}}function d(t,e){t._actions=Object.create(null),t._mutations=Object.create(null),t._wrappedGetters=Object.create(null),t._modulesNamespaceMap=Object.create(null);var r=t.state;g(t,r,[],t._modules.root,!0),m(t,r,e)}function m(t,e,n){var i=t._vm;t.getters={},t._makeLocalGettersCache=Object.create(null);var o=t._wrappedGetters,s={};r(o,(function(e,r){s[r]=function(t,e){return function(){return t(e)}}(e,t),Object.defineProperty(t.getters,r,{get:function(){return t._vm[r]},enumerable:!0})}));var a=u.config.silent;u.config.silent=!0,t._vm=new u({data:{$$state:e},computed:s}),u.config.silent=a,t.strict&&function(t){t._vm.$watch((function(){return this._data.$$state}),(function(){}),{deep:!0,sync:!0})}(t),i&&(n&&t._withCommit((function(){i._data.$$state=null})),u.nextTick((function(){return i.$destroy()})))}function g(t,e,r,n,i){var o=!r.length,s=t._modules.getNamespace(r);if(n.namespaced&&(t._modulesNamespaceMap[s],t._modulesNamespaceMap[s]=n),!o&&!i){var a=v(e,r.slice(0,-1)),c=r[r.length-1];t._withCommit((function(){u.set(a,c,n.state)}))}var l=n.context=function(t,e,r){var n=""===e,i={dispatch:n?t.dispatch:function(r,n,i){var o=y(r,n,i),s=o.payload,a=o.options,u=o.type;return a&&a.root||(u=e+u),t.dispatch(u,s)},commit:n?t.commit:function(r,n,i){var o=y(r,n,i),s=o.payload,a=o.options,u=o.type;a&&a.root||(u=e+u),t.commit(u,s,a)}};return Object.defineProperties(i,{getters:{get:n?function(){return t.getters}:function(){return function(t,e){if(!t._makeLocalGettersCache[e]){var r={},n=e.length;Object.keys(t.getters).forEach((function(i){if(i.slice(0,n)===e){var o=i.slice(n);Object.defineProperty(r,o,{get:function(){return t.getters[i]},enumerable:!0})}})),t._makeLocalGettersCache[e]=r}return t._makeLocalGettersCache[e]}(t,e)}},state:{get:function(){return v(t.state,r)}}}),i}(t,s,r);n.forEachMutation((function(e,r){!function(t,e,r,n){(t._mutations[e]||(t._mutations[e]=[])).push((function(e){r.call(t,n.state,e)}))}(t,s+r,e,l)})),n.forEachAction((function(e,r){var n=e.root?r:s+r,i=e.handler||e;!function(t,e,r,n){(t._actions[e]||(t._actions[e]=[])).push((function(e){var i,o=r.call(t,{dispatch:n.dispatch,commit:n.commit,getters:n.getters,state:n.state,rootGetters:t.getters,rootState:t.state},e);return(i=o)&&"function"==typeof i.then||(o=Promise.resolve(o)),t._devtoolHook?o.catch((function(e){throw t._devtoolHook.emit("vuex:error",e),e})):o}))}(t,n,i,l)})),n.forEachGetter((function(e,r){!function(t,e,r,n){t._wrappedGetters[e]||(t._wrappedGetters[e]=function(t){return r(n.state,n.getters,t.state,t.getters)})}(t,s+r,e,l)})),n.forEachChild((function(n,o){g(t,e,r.concat(o),n,i)}))}function v(t,e){return e.reduce((function(t,e){return t[e]}),t)}function y(t,e,r){return n(t)&&t.type&&(r=e,e=t,t=t.type),{type:t,payload:e,options:r}}function _(t){u&&t===u||function(t){if(Number(t.version.split(".")[0])>=2)t.mixin({beforeCreate:r});else{var e=t.prototype._init;t.prototype._init=function(t){void 0===t&&(t={}),t.init=t.init?[r].concat(t.init):r,e.call(this,t)}}function r(){var t=this.$options;t.store?this.$store="function"==typeof t.store?t.store():t.store:t.parent&&t.parent.$store&&(this.$store=t.parent.$store)}}(u=t)}f.state.get=function(){return this._vm._data.$$state},f.state.set=function(t){},h.prototype.commit=function(t,e,r){var n=this,i=y(t,e,r),o=i.type,s=i.payload,a=(i.options,{type:o,payload:s}),u=this._mutations[o];u&&(this._withCommit((function(){u.forEach((function(t){t(s)}))})),this._subscribers.slice().forEach((function(t){return t(a,n.state)})))},h.prototype.dispatch=function(t,e){var r=this,n=y(t,e),i=n.type,o=n.payload,s={type:i,payload:o},a=this._actions[i];if(a){try{this._actionSubscribers.slice().filter((function(t){return t.before})).forEach((function(t){return t.before(s,r.state)}))}catch(t){}var u=a.length>1?Promise.all(a.map((function(t){return t(o)}))):a[0](o);return new Promise((function(t,e){u.then((function(e){try{r._actionSubscribers.filter((function(t){return t.after})).forEach((function(t){return t.after(s,r.state)}))}catch(t){}t(e)}),(function(t){try{r._actionSubscribers.filter((function(t){return t.error})).forEach((function(e){return e.error(s,r.state,t)}))}catch(t){}e(t)}))}))}},h.prototype.subscribe=function(t,e){return p(t,this._subscribers,e)},h.prototype.subscribeAction=function(t,e){return p("function"==typeof t?{before:t}:t,this._actionSubscribers,e)},h.prototype.watch=function(t,e,r){var n=this;return this._watcherVM.$watch((function(){return t(n.state,n.getters)}),e,r)},h.prototype.replaceState=function(t){var e=this;this._withCommit((function(){e._vm._data.$$state=t}))},h.prototype.registerModule=function(t,e,r){void 0===r&&(r={}),"string"==typeof t&&(t=[t]),this._modules.register(t,e),g(this,this.state,t,this._modules.get(t),r.preserveState),m(this,this.state)},h.prototype.unregisterModule=function(t){var e=this;"string"==typeof t&&(t=[t]),this._modules.unregister(t),this._withCommit((function(){var r=v(e.state,t.slice(0,-1));u.delete(r,t[t.length-1])})),d(this)},h.prototype.hasModule=function(t){return"string"==typeof t&&(t=[t]),this._modules.isRegistered(t)},h.prototype.hotUpdate=function(t){this._modules.update(t),d(this,!0)},h.prototype._withCommit=function(t){var e=this._committing;this._committing=!0,t(),this._committing=e},Object.defineProperties(h.prototype,f);var b=j((function(t,e){var r={};return M(e).forEach((function(e){var n=e.key,i=e.val;r[n]=function(){var e=this.$store.state,r=this.$store.getters;if(t){var n=x(this.$store,0,t);if(!n)return;e=n.context.state,r=n.context.getters}return"function"==typeof i?i.call(this,e,r):e[i]},r[n].vuex=!0})),r})),w=j((function(t,e){var r={};return M(e).forEach((function(e){var n=e.key,i=e.val;r[n]=function(){for(var e=[],r=arguments.length;r--;)e[r]=arguments[r];var n=this.$store.commit;if(t){var o=x(this.$store,0,t);if(!o)return;n=o.context.commit}return"function"==typeof i?i.apply(this,[n].concat(e)):n.apply(this.$store,[i].concat(e))}})),r})),O=j((function(t,e){var r={};return M(e).forEach((function(e){var n=e.key,i=e.val;i=t+i,r[n]=function(){if(!t||x(this.$store,0,t))return this.$store.getters[i]},r[n].vuex=!0})),r})),S=j((function(t,e){var r={};return M(e).forEach((function(e){var n=e.key,i=e.val;r[n]=function(){for(var e=[],r=arguments.length;r--;)e[r]=arguments[r];var n=this.$store.dispatch;if(t){var o=x(this.$store,0,t);if(!o)return;n=o.context.dispatch}return"function"==typeof i?i.apply(this,[n].concat(e)):n.apply(this.$store,[i].concat(e))}})),r}));function M(t){return function(t){return Array.isArray(t)||n(t)}(t)?Array.isArray(t)?t.map((function(t){return{key:t,val:t}})):Object.keys(t).map((function(e){return{key:e,val:t[e]}})):[]}function j(t){return function(e,r){return"string"!=typeof e?(r=e,e=""):"/"!==e.charAt(e.length-1)&&(e+="/"),t(e,r)}}function x(t,e,r){return t._modulesNamespaceMap[r]}function E(t,e,r){var n=r?t.groupCollapsed:t.group;try{n.call(t,e)}catch(r){t.log(e)}}function A(t){try{t.groupEnd()}catch(e){t.log("—— log end ——")}}function k(){var t=new Date;return" @ "+C(t.getHours(),2)+":"+C(t.getMinutes(),2)+":"+C(t.getSeconds(),2)+"."+C(t.getMilliseconds(),3)}function C(t,e){return"0",r=e-t.toString().length,new Array(r+1).join("0")+t;var r}var $={Store:h,install:_,version:"3.6.2",mapState:b,mapMutations:w,mapGetters:O,mapActions:S,createNamespacedHelpers:function(t){return{mapState:b.bind(null,t),mapGetters:O.bind(null,t),mapMutations:w.bind(null,t),mapActions:S.bind(null,t)}},createLogger:function(t){void 0===t&&(t={});var r=t.collapsed;void 0===r&&(r=!0);var n=t.filter;void 0===n&&(n=function(t,e,r){return!0});var i=t.transformer;void 0===i&&(i=function(t){return t});var o=t.mutationTransformer;void 0===o&&(o=function(t){return t});var s=t.actionFilter;void 0===s&&(s=function(t,e){return!0});var a=t.actionTransformer;void 0===a&&(a=function(t){return t});var u=t.logMutations;void 0===u&&(u=!0);var c=t.logActions;void 0===c&&(c=!0);var l=t.logger;return void 0===l&&(l=console),function(t){var h=e(t.state);void 0!==l&&(u&&t.subscribe((function(t,s){var a=e(s);if(n(t,h,a)){var u=k(),c=o(t),f="mutation "+t.type+u;E(l,f,r),l.log("%c prev state","color: #9E9E9E; font-weight: bold",i(h)),l.log("%c mutation","color: #03A9F4; font-weight: bold",c),l.log("%c next state","color: #4CAF50; font-weight: bold",i(a)),A(l)}h=a})),c&&t.subscribeAction((function(t,e){if(s(t,e)){var n=k(),i=a(t),o="action "+t.type+n;E(l,o,r),l.log("%c action","color: #03A9F4; font-weight: bold",i),A(l)}})))}}},N=s(827),G=s.n(N);let P;P=class{get length(){return Object.keys(this).length}key(t){return Object.keys(this)[t]}setItem(t,e){this[t]=e.toString()}getItem(t){return this[t]}removeItem(t){delete this[t]}clear(){for(let t of Object.keys(this))delete this[t]}};class T{constructor(){this._queue=[],this._flushing=!1}enqueue(t){return this._queue.push(t),this._flushing?Promise.resolve():this.flushQueue()}flushQueue(){this._flushing=!0;const t=()=>{const e=this._queue.shift();if(e)return e.then(t);this._flushing=!1};return Promise.resolve(t())}}const q={replaceArrays:{arrayMerge:(t,e,r)=>e},concatArrays:{arrayMerge:(t,e,r)=>t.concat(...e)}};function z(t,e,r){return G()(t,e,q[r])}let I=JSON;var L=s(566),R=s.n(L),H=s(355),J=s.n(H),F=s(77),U=s.n(F),V=s(441),D=s.n(V);class Q extends(D()){static _defaultConfig={saveDepth:2};_vuex;_store;_stores;_vue;constructor(t,e,r={}){super(r),this._vue=t,this._stores=e,this._vuex=$,this.vuex()}state(t){return R()(this._store.state,t)}getter(t){return R()(this._store.getters,t.split(".").join("/"))}mutation(t,e){return this._store.commit(t.split(".").join("/"),e)}action(t,e){return this._store.dispatch(t.split(".").join("/"),e)}mapState(t,e){return this._vuex.mapState(t,e)}mapGetters(t,e){return this._vuex.mapGetters(t,e)}mapMutations(t,e){return this._vuex.mapMutations(t,e)}mapActions(t,e){return this._vuex.mapActions(t)}vuex(){if(!this._store){this.constructor._addingHasModuleFunc(this._vuex),this._vue.use(this._vuex);const t=new class{constructor(t){this._mutex=new T,this.subscriber=t=>e=>t.subscribe(e),void 0===t&&(t={}),this.key=null!=t.key?t.key:"vuex",this.subscribed=!1,this.supportCircular=t.supportCircular||!1,this.supportCircular&&(I=s(309)),this.mergeOption=t.mergeOption||"replaceArrays";let e=!0;try{window.localStorage.getItem("")}catch(t){e=!1}if(t.storage)this.storage=t.storage;else if(e)this.storage=window.localStorage;else{if(!P)throw new Error("Neither 'window' is defined, nor 'MockStorage' is available");this.storage=new P}this.reducer=null!=t.reducer?t.reducer:null==t.modules?t=>t:e=>t.modules.reduce(((t,r)=>z(t,{[r]:e[r]},this.mergeOption)),{}),this.filter=t.filter||(t=>!0),this.strictMode=t.strictMode||!1,this.RESTORE_MUTATION=function(t,e){const r=z(t,e||{},this.mergeOption);for(const e of Object.keys(r))this._vm.$set(t,e,r[e])},this.asyncStorage=t.asyncStorage||!1,this.asyncStorage?(this.restoreState=null!=t.restoreState?t.restoreState:(t,e)=>e.getItem(t).then((t=>"string"==typeof t?this.supportCircular?I.parse(t||"{}"):JSON.parse(t||"{}"):t||{})),this.saveState=null!=t.saveState?t.saveState:(t,e,r)=>r.setItem(t,this.asyncStorage?z({},e||{},this.mergeOption):this.supportCircular?I.stringify(e):JSON.stringify(e)),this.plugin=t=>{t.restored=this.restoreState(this.key,this.storage).then((e=>{this.strictMode?t.commit("RESTORE_MUTATION",e):t.replaceState(z(t.state,e||{},this.mergeOption)),this.subscriber(t)(((t,e)=>{this.filter(t)&&this._mutex.enqueue(this.saveState(this.key,this.reducer(e),this.storage))})),this.subscribed=!0}))}):(this.restoreState=null!=t.restoreState?t.restoreState:(t,e)=>{const r=e.getItem(t);return"string"==typeof r?this.supportCircular?I.parse(r||"{}"):JSON.parse(r||"{}"):r||{}},this.saveState=null!=t.saveState?t.saveState:(t,e,r)=>r.setItem(t,this.supportCircular?I.stringify(e):JSON.stringify(e)),this.plugin=t=>{const e=this.restoreState(this.key,this.storage);this.strictMode?t.commit("RESTORE_MUTATION",e):t.replaceState(z(t.state,e||{},this.mergeOption)),this.subscriber(t)(((t,e)=>{this.filter(t)&&this.saveState(this.key,this.reducer(e),this.storage)})),this.subscribed=!0})}}({storage:window.localStorage,reducer:t=>J()(t,((t,e,r)=>{const n=this.constructor._reducer(e,1,this._config("saveDepth"));return n&&U()(n)&&(t[r]=n),t}),{})});this._store=new this._vuex.Store({modules:{...this._stores},plugins:[t.plugin]})}return this._vuex}store(){return this._store}static _reducer(t,e,r){return R()(t,"_save",!1)?this._removeOthers(t):e>r?void 0:J()(t,((t,n,i)=>{const o=this._reducer(n,e+1,r);return o&&U()(o)&&(t[i]=o),t}),{})}static _removeOthers(t){const e=J()(t._save,((e,r)=>(e[r]=t[r],e)),{});return U()(e)&&(e._save=t._save),e}static _addingHasModuleFunc(t){!function(t){const e=t.Store.prototype;if(!e.hasModule){const t=e.registerModule,r=e.unregisterModule,n=t=>t instanceof Array?t.join("/"):t;e.registerModule=function(e,r,i){const o=n(e);this.state._modules=this.state._modules||{},this._initialized=this._initialized||{};const s=this.state._modules[o],a=this._initialized[o];if(this.state._modules={...this.state._modules,[o]:!0},this._initialized={...this._initialized,[o]:!0},s&&a)return!1;if(s){const n={...i,preserveState:!0};return t.call(this,e,r,n)}return t.call(this,e,r,i)},e.unregisterModule=function(t,e,i){const o=n(t);return this.state._modules=this.state._modules||{},this._initialized=this._initialized||{},this.state._modules={...this.state._modules,[o]:!1},this._initialized={...this._initialized,[o]:!1},r.call(this,t,e,i)},e.hasModule=function(t){const e=n(t);return this.state._modules[e]}}}(t)}}}(),a}()}));
+import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist'
+import get from 'lodash/get'
+import reduce from 'lodash/reduce'
+import size from 'lodash/size'
+import NastLib from 'nast/Lib'
+import addingHasModuleFunc from './src/addingHasModuleFunc'
+
+/**
+ *
+ */
+export default class NastStore extends NastLib {
+  /**
+   * @type {Object}
+   * @protected
+   */
+  static _defaultConfig = {
+    saveDepth: 2,
+  }
+  
+  /**
+   * @type {Vuex}
+   * @protected
+   */
+  _vuex
+  
+  /**
+   * @type {Vuex}
+   * @protected
+   */
+  _store
+  
+  /**
+   * @type {Object}
+   * @protected
+   */
+  _stores
+  
+  /**
+   * @type {Vue}
+   * @protected
+   */
+  _vue
+  
+  /**
+   * @param {Vue} vue
+   * @param {Object} stores
+   * @param {Object} config
+   */
+  constructor(vue, stores, config = {}) {
+    super(config)
+    this._vue = vue
+    this._stores = stores
+    this._vuex = Vuex
+
+    this.vuex()
+  }
+  
+  /**
+   * @param {string} name
+   * @example 'some.nested.module.count'
+   *
+   * @return {*}
+   */
+  state(name) {
+    return get(this._store.state, name)
+  }
+  
+  /**
+   * @param {string} name
+   * @example 'some.nested.module.doneTodosCount'
+   *
+   * @return {*}
+   */
+  getter(name) {
+    return get(this._store.getters, name.split('.').join('/'))
+  }
+  
+  /**
+   * @param {string} name
+   * @param {*} payload
+   *
+   * @return {*}
+   */
+  mutation(name, payload = undefined) {
+    return this._store.commit(name.split('.').join('/'), payload)
+  }
+  
+  /**
+   * @param {string} name
+   * @param {*} payload
+   *
+   * @return {*}
+   */
+  action(name, payload = undefined) {
+    return this._store.dispatch(name.split('.').join('/'), payload)
+  }
+  
+  /**
+   * @param {string} namespace
+   * @example 'some/nested/module'
+   *
+   * @param {Object|Array} mapper
+   * @example
+   * {
+   *   count: (state) => state.count,
+   *   countAlias: 'count',
+   *   countPlusLocalState(state) {
+   *     return state.count + this.localCount
+   *   },
+   * }
+   * OR
+   * [ 'count', ]
+   *
+   * @return {Object}
+   */
+  mapState(namespace = undefined, mapper = undefined) {
+    return this._vuex.mapState(namespace, mapper)
+  }
+  
+  /**
+   * @param {string} namespace
+   * @example 'some/nested/module'
+   *
+   * @param {Object|Array} mapper
+   * @example
+   * { doneCount: 'doneTodosCount', }
+   * OR
+   * [ 'doneTodosCount', ]
+   *
+   * @return {Object}
+   */
+  mapGetters(namespace = undefined, mapper = undefined) {
+    return this._vuex.mapGetters(namespace, mapper)
+  }
+  
+  /**
+   * @param {string} namespace
+   * @example 'some/nested/module'
+   *
+   * @param {Object|Array} mapper
+   * @example
+   * { add: 'increment', }
+   * OR
+   * [ 'increment', ]
+   *
+   * @return {Object}
+   */
+  mapMutations(namespace = undefined, mapper = undefined) {
+    return this._vuex.mapMutations(namespace, mapper)
+  }
+  
+  /**
+   * @param {string} namespace
+   * @example 'some/nested/module'
+   *
+   * @param {Object|Array} mapper
+   * @example
+   * { add: 'increment', }
+   * OR
+   * [ 'increment', ]
+   *
+   * @return {Object}
+   */
+  mapActions(namespace = undefined, mapper = undefined) {
+    return this._vuex.mapActions(namespace)
+  }
+  
+  
+  /**
+   * @return {Vuex}
+   */
+  vuex() {
+    if (!this._store) {
+      this.constructor._addingHasModuleFunc(this._vuex)
+      this._vue.use(this._vuex)
+
+      const vuexLocal = new VuexPersistence({
+        storage: window.localStorage,
+        reducer: (state) => {
+          return reduce(state, (result, value, key) => {
+            const v = this.constructor._reducer(value, 1, this._config('saveDepth'))
+            if (v && size(v)) {
+              result[key] = v
+            }
+            return result
+          }, {})
+        },
+      })
+
+      this._store = new this._vuex.Store({
+        modules: {
+          ...this._stores,
+        },
+        plugins: [ vuexLocal.plugin, ],
+      })
+    }
+  
+    return this._vuex
+  }
+
+  /**
+   * @return {Vuex}
+   */
+  store() {
+    return this._store
+  }
+  
+  
+  /**
+   * Reducer, проходит в глубину по полям state и удаляет все значения, которых нет в _save
+   *
+   * @param {Object} state
+   * @param {number} lvl
+   * @param {number} maxLvl  Запрещаем ходить слишком глубого, так как использовать _save на вложенных элементах нецелесообразно
+   * @return {Object|undefined}
+   * @protected
+   */
+  static _reducer(state, lvl, maxLvl) {
+    if (get(state, '_save', false)) {
+      return this._removeOthers(state)
+    }
+    if (lvl > maxLvl) {
+      return
+    }
+    return reduce(state, (result, v, k) => {
+      const v2 = this._reducer(v, lvl + 1, maxLvl)
+      if (v2 && size(v2)) {
+        result[k] = v2
+      }
+      return result
+    }, {})
+  }
+  
+  /**
+   * Возвращает state без полей которых нет в _save
+   * @param {Object} state
+   * @return {Object}
+   * @protected
+   */
+  static _removeOthers(state) {
+    const data = reduce(state['_save'], (result, key) => {
+      result[key] = state[key]
+      return result
+    }, {})
+    if (size(data)) {
+      data['_save'] = state['_save']
+    }
+    return data
+  }
+  
+  /**
+   * Adding function hasModule to Vuex.Store.prototype
+   * @param {Vuex} vuex
+   * @protected
+   */
+  static _addingHasModuleFunc(vuex) {
+    addingHasModuleFunc(vuex)
+  }
+}

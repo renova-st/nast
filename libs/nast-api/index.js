@@ -1,1 +1,128 @@
-!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e(require("axios"),require("lodash/each"),require("lodash/merge"),require("nast/Lib"),require("lodash/isFunction"),require("lodash/isArray"),require("lodash/isString"),require("lodash/trim")):"function"==typeof define&&define.amd?define(["axios","lodash/each","lodash/merge","nast/Lib","lodash/isFunction","lodash/isArray","lodash/isString","lodash/trim"],e):"object"==typeof exports?exports["nast-api"]=e(require("axios"),require("lodash/each"),require("lodash/merge"),require("nast/Lib"),require("lodash/isFunction"),require("lodash/isArray"),require("lodash/isString"),require("lodash/trim")):t["nast-api"]=e(t.axios,t["lodash/each"],t["lodash/merge"],t["nast/Lib"],t["lodash/isFunction"],t["lodash/isArray"],t["lodash/isString"],t["lodash/trim"])}(self,(function(t,e,r,s,i,n,u,h){return function(){"use strict";var o={376:function(e){e.exports=t},180:function(t){t.exports=e},205:function(t){t.exports=n},170:function(t){t.exports=i},946:function(t){t.exports=u},893:function(t){t.exports=r},458:function(t){t.exports=h},441:function(t){t.exports=s}},a={};function l(t){var e=a[t];if(void 0!==e)return e.exports;var r=a[t]={exports:{}};return o[t](r,r.exports,l),r.exports}l.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return l.d(e,{a:e}),e},l.d=function(t,e){for(var r in e)l.o(e,r)&&!l.o(t,r)&&Object.defineProperty(t,r,{enumerable:!0,get:e[r]})},l.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},l.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})};var c={};return function(){l.r(c),l.d(c,{RequestBuilder:function(){return g},default:function(){return b}});var t=l(376),e=l.n(t),r=l(180),s=l.n(r),i=l(893),n=l.n(i),u=l(441),h=l.n(u),o=l(170),a=l.n(o),_=l(205),f=l.n(_),d=l(946),q=l.n(d),y=l(458),p=l.n(y);class g{_url;_method;_data;_request=(t,e,r,s)=>{};_version=1;_config={};_callbacks={before:{},then:{},catch:{},finally:{}};_mock=void 0;_mockTimeout=500;_query={page:0,size:0,sort:[],search:"",filter:{},with:{},fields:[],tree:!1,all:!1,query:{}};_hash="";constructor(t,e,r,s={}){this._url=t,this._method=e,this._request=r,this.config(s)}then(t){let e;return s()(this._callbacks.before,(t=>t())),e=this._mock?new Promise((t=>{setTimeout((()=>{t(this._mock())}),this._mockTimeout)})):this._request(this.url(),this._method,this._data,this._config),s()(this._callbacks.then,(t=>{e=e.then(t)})),e=e.then(t),s()(this._callbacks.catch,(t=>{e=e.catch(t)})),s()(this._callbacks.finally,(t=>{e=e.finally(t)})),e}config(t){return n()(this._config,t),this}callback(t,e="default",r="then"){return"before"===r?this._callbacks.before[e]=t:"then"===r?this._callbacks.then[e]=t:"catch"===r?this._callbacks.catch[e]=t:"finally"===r&&(this._callbacks.finally[e]=t),this}mock(t,e=0){return this._mock=t,e&&(this._mockTimeout=e),this}v(t){return this._version=t,this}data(t){return this._data=t,this}hash(t){return this._hash=t,this}params(t){return s()(t,((t,e)=>{void 0!==this._query[e]&&this[e](t)})),this}query(t){return this._query.query=t,this}page(t){return this._query.page=t,this}size(t){return this._query.size=t,this}sort(t,e=!1){return e&&(this._query.sort=[]),q()(t)?this._query.sort.push(t):this._query.sort=n()(this._query.sort,t),this}search(t){return this._query.search=t,this}filter(t,e=!1){return e&&(this._query.filter=[]),this._query.filter=n()(this._query.filter,t),this}with(t,e=null,r=!1){if(q()(t)||(r=e),r&&(this._query.with={}),q()(t)){let r=null;a()(e)&&(r=e(new this.constructor("","get",(()=>{})))?._query||null),this._query.with[t]=r}else this._query.with=n()(this._query.with,t);return this}fields(t,e=!1){return e&&(this._query.fields=[]),this._query.fields=n()(this._query.fields,t),this}tree(t=!0){return this._query.tree=t,this}all(t=!0){return this._query.all=t,this}url(){let t="";if(q()(this._url))t="/"+p()(this._url,"/");else{const e=this._url[0].split("*"),r=this._url.slice(1);s()(r,((t,r)=>{void 0!==t&&(e[r]+=`/${t}`)})),t="/"+p()(e.join(""),"/")}let e={...this._query.query,...this._query};return delete e.query,e=this.constructor._serialize(e),(this._version?`/v${this._version}`:"")+t+e+(this._hash?`#${this._hash}`:"")}static _serialize(t){const e=(t,r,i,n)=>{const u=n?n+"["+i+"]":i;return f()(r)?s()(r,(e=>{t.push(u+"[]="+e)})):"object"==typeof r?s()(r,((r,s)=>{t=e(t,r,s,u)})):r&&t.push(u+"="+r),t};let r=e([],t,"","").join("&");return r&&(r="?"+r),r}}class b extends(h()){static _defaultConfig={servers:{default:"http://127.0.0.1:8000/api/"},then:t=>t,catch:t=>{throw t},finally:()=>{}};_instances={};_configs={};_requestBuilder=null;constructor(t,r={}){super(r),s()(b._config("servers",r),((r,s)=>{this._instances[s]=e().create({baseURL:r}),this._configs[s]=[],this._requestBuilder=t}))}get(t,e="default"){return this._request(t,"get",e)}post(t,e="default"){return this._request(t,"post",e)}put(t,e="default"){return this._request(t,"put",e)}patch(t,e="default"){return this._request(t,"patch",e)}delete(t,e="default"){return this._request(t,"delete",e)}config(t,e="default"){n()(this._configs[e],t)}_request(t,e,r="default"){return new this._requestBuilder(t,e,((t,e,s,i)=>this._instances[r]({...i,url:t,method:e,data:s})),this._configs[r]).callback(this._config("then"),"config").callback(this._config("catch"),"config","catch")}}}(),c}()}));
+import axios from 'axios'
+import each from 'lodash/each'
+import merge from 'lodash/merge'
+import NastLib from 'nast/Lib'
+
+/**
+ *
+ */
+export default class NastApi extends NastLib {
+  /**
+   * @type {Object}
+   * @protected
+   */
+  static defaultConfig = {
+    servers: {
+      default: 'http://127.0.0.1:8000/api/',
+    },
+    then: (r) => r,
+    catch: (r) => {
+      throw r
+    },
+    finally: () => {},
+  }
+  
+  /**
+   * @type {Object}
+   * @protected
+   */
+  _instances = {}
+  
+  /**
+   * Configurations for instances
+   * @type {Object}
+   * @protected
+   */
+  _configs = {}
+  
+  /**
+   * @type {RequestBuilder}
+   * @protected
+   */
+  _requestBuilder = null
+  
+  
+  /**
+   * @param {RequestBuilder} requestBuilder
+   * @param {Object} config
+   */
+  constructor(requestBuilder, config = {}) {
+    super(config)
+    each(NastApi._config('servers', config), (baseURL, name) => {
+      this._instances[name] = axios.create({ baseURL, })
+      this._configs[name] = []
+      this._requestBuilder = requestBuilder
+    })
+  }
+  
+  /**
+   * @param {String|Array} url
+   * @param {string} name  Name of api instance
+   * @return {RequestBuilder}
+   */
+  get(url, name = 'default') {
+    return this._request(url, 'get', name)
+  }
+  
+  /**
+   * @param {String|Array} url
+   * @param {string} name  Name of api instance
+   * @return {RequestBuilder}
+   */
+  post(url, name = 'default') {
+    return this._request(url, 'post', name)
+  }
+  
+  /**
+   * @param {String|Array} url
+   * @param {string} name  Name of api instance
+   * @return {RequestBuilder}
+   */
+  put(url, name = 'default') {
+    return this._request(url, 'put', name)
+  }
+  
+  /**
+   * @param {String|Array} url
+   * @param {string} name  Name of api instance
+   * @return {RequestBuilder}
+   */
+  patch(url, name = 'default') {
+    return this._request(url, 'patch', name)
+  }
+  
+  /**
+   * @param {String|Array} url
+   * @param {string} name  Name of api instance
+   * @return {RequestBuilder}
+   */
+  delete(url, name = 'default') {
+    return this._request(url, 'delete', name)
+  }
+  
+  /**
+   * Config instance
+   * @param {ApiConfigInterface} config
+   * @param {string} name  Name of api instance
+   */
+  config(config, name = 'default') {
+    merge(this._configs[name], config)
+  }
+  
+  
+  /**
+   * @param {String|Array} url
+   * @param {string} method
+   * @param {string} name
+   * @return {RequestBuilder}
+   * @protected
+   */
+  _request(url, method, name = 'default') {
+    const request = (url, method, data, config) => {
+      return this._instances[name]({ ...config, url, method, data, })
+    }
+    return new (this._requestBuilder)(url, method, request, this._configs[name])
+      .callback(this._config('then'), 'config')
+      .callback(this._config('catch'), 'config', 'catch')
+  }
+}

@@ -1,0 +1,4 @@
+env='local'
+debug=true
+baseUrl='/'
+server='https://api.example.st/api/'

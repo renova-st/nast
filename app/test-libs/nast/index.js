@@ -1,4 +1,5 @@
 import NastCore from 'nast'
+import env from './../../../.env'
 
 const settings = {
   routes: [
@@ -20,6 +21,7 @@ const settings = {
       namespaced: true,
     },
   },
+  env,
 }
 
 NastCore.createApp(settings, {})

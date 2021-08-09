@@ -1,1 +1,1 @@
-import './test-libs/auth'
+import './test-libs/nast'
