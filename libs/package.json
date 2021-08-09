@@ -1,0 +1,33 @@
+{
+  "name": "libs",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build.nast": "npx rollup --config --name=nast",
+    "build.api": "npx rollup --config --name=nast-api",
+    "build.router": "npx rollup --config --name=nast-router",
+    "build.store": "npx rollup --config --name=nast-store",
+    "build.form": "npx rollup --config --name=nast-form",
+    "build.auth": "npx rollup --config --name=nast-auth",
+    "publish.nast": "npm run build.nast && npm publish nast",
+    "publish.api": "npm run build.api && npm publish nast-api",
+    "publish.router": "npm run build.router && npm publish nast-router",
+    "publish.store": "npm run build.store && npm publish nast-store",
+    "publish.form": "npm run build.form && npm publish nast-form",
+    "publish.auth": "npm run build.auth && npm publish nast-auth",
+
+    "publish.lint": "npm publish eslint-config-renova",
+    "publish.cli": "npm publish vue-cli-plugin-nast"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "rollup": "^2.53.1",
+    "rollup-plugin-sourcemaps": "^0.6.3"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "vue-cli-plugin-nast",
+  "version": "1.0.6",
+  "description": "Vue-cli plugin for nast framework",
+  "keywords": [
+    "vue",
+    "library",
+    "framework"
+  ],
+  "author": {
+    "name": "Alexey",
+    "email": "alexey@renova.st"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/renova-st/nast#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renova-st/nast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/renova-st/nast/issues"
+  },
+  "scripts": {},
+  "dependencies": {
+    "eslint-config-renova": "^1.*",
+    "lodash": "^4.*",
+    "nast": "^1.*",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2"
+  }
+}

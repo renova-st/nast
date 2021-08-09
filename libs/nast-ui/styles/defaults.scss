@@ -1,0 +1,25 @@
+
+$default-colors: (
+  primary: #3f51b5,
+  secondary: #b57e4b,
+  success: #4caf50,
+  danger: #f44336,
+  default: (#f2f2f2, #444),
+);
+
+$default-transparent-lvl: 10;
+$default-brightness-lvl: 5;
+$default-transparent-k: 90%;
+$default-brightness-k: 5%;
+
+
+$default-grid: (
+  xs: 350px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1270px,
+) !default;
+
+$default-grid-padding: 20px !default;
+$default-grid-columns: 12 !default;

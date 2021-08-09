@@ -1,0 +1,32 @@
+@import "utils";
+
+@mixin media($lower, $upper:null) {
+  @if $lower and $upper {
+    @include n-media-breakpoint-between($lower, $upper) {
+      @content;
+    }
+  }
+  @if $lower and not $upper {
+    @include n-media-breakpoint-up($lower) {
+      @content;
+    }
+  }
+  @if not $lower and $upper {
+    @include n-media-breakpoint-down($upper) {
+      @content;
+    }
+  }
+}
+
+@mixin initialize($themes: (), $options: ()) {
+  $themes: if(map_get($themes, 'default'), $themes, (default: ()));
+  
+  @each $theme-name, $theme-variables in $themes {
+    $class: if($theme-name == default, '', '.#{$theme-name}');
+    html body#{$class} {
+      @each $name, $value in n-calc-theme-vars($theme-variables, $options) {
+        #{$name}: #{$value};
+      }
+    }
+  }
+}

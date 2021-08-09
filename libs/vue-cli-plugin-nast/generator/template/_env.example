@@ -1,0 +1,4 @@
+env='production'
+debug=false
+baseUrl='/'
+server='https://api.example.st/api/'

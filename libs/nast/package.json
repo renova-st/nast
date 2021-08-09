@@ -1,0 +1,39 @@
+{
+  "name": "nast",
+  "version": "1.0.12",
+  "description": "Library for fast coding.",
+  "keywords": [
+    "vue",
+    "library",
+    "framework"
+  ],
+  "author": {
+    "name": "Alexey",
+    "email": "alexey@renova.st"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/renova-st/nast#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renova-st/nast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/renova-st/nast/issues"
+  },
+  "scripts": {},
+  "dependencies": {
+    "lodash": "^4.17",
+    "nast-api": "^1.0.*",
+    "nast-auth": "^1.0.*",
+    "nast-date": "^1.0.*",
+    "nast-form": "^1.0.*",
+    "nast-helpers": "^1.0.*",
+    "nast-router": "^1.0.*",
+    "nast-secure": "^1.0.*",
+    "nast-store": "^1.0.*",
+    "nast-ui": "^1.0.*"
+  },
+  "peerDependencies": {
+    "vue": "^2.6"
+  }
+}

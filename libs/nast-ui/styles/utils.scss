@@ -1,0 +1,160 @@
+@import "defaults";
+
+$n-grid-breakpoints: $default-grid;
+
+
+
+@mixin n-media-breakpoint-up($name) {
+  $min: map_get($n-grid-breakpoints, $name);
+  //$min: var(--n-grid-#{name});
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin n-media-breakpoint-down($name) {
+  $max: map_get($n-grid-breakpoints, $name);
+  @if $max {
+    @media (max-width: #{$max - 1}) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin n-media-breakpoint-between($lower, $upper) {
+  $min: map_get($n-grid-breakpoints, $lower);
+  $max: map_get($n-grid-breakpoints, $upper);
+  
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@function n-map_set($map, $key, $value) {
+  $new: ($key: $value);
+  @return map-merge($map, $new);
+}
+
+@function n-get-yiq($color) {
+  @return ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) / 1000;
+}
+
+@function n-get-contrast($color, $black, $white) {
+  //$center: (n-get-yiq($color) - n-get-yiq($black)) / 2;
+  @return if(n-get-yiq($color) >= 150, $black, $white);
+}
+
+@function n-fill-object-with-defaults($object, $defaults) {
+  @if (not length($object)) {
+    @return $defaults
+  }
+  
+  @each $name, $value in $defaults {
+    @if (not map_get($object, $name)) {
+      $object: n-map_set($object, $name, $value)
+    }
+  }
+  @return $object
+}
+
+@function n-calc-theme-vars($theme-variables: (), $options: ()) {
+  $result: (
+    --gray-0: #000,
+    --gray-1: #1a1a1a,
+    --gray-2: #333,
+    --gray-3: #4d4d4d,
+    --gray-4: #666,
+    --gray-5: #808080,
+    --gray-6: #9a9a9a,
+    --gray-7: #b3b3b3,
+    --gray-8: #cdcdcd,
+    --gray-9: #e6e6e6,
+    --gray-10: #fff,
+    
+    --body-bg: #fafafa,
+    --content-bg: #fff,
+    --sidebar-bg: #2a2a2a,
+    --content-padding: 20px,
+    
+    --text-color: #222,
+    --text-color-op: #ddd,
+    --sidebar-color: #ddd,
+    
+    --link-color: var(--primary),
+    --link-color-op: #fff,
+    
+    --text-font: '400, sans-serif',
+    --header-font: sans-serif,
+    --h1-font: 500 2.2em var(--header-font),
+    --h2-font: 400 1.8em var(--header-font),
+    --h3-font: 400 1.5em var(--header-font),
+    --h4-font: 500 1.3em var(--header-font),
+    --h5-font: 600 1.1em var(--header-font),
+    --h6-font: 600 1em var(--header-font),
+    --line-height: 1.5,
+  
+  
+    --transition-fast: 100ms ease-out,
+    --transition: 300ms ease-out,
+    --transition-slow: 500ms ease-out,
+    --border-radius: 4px,
+    --border-color: #aaa,
+  );
+  
+  // options
+  $transparent-lvl: map_get($options, 'transparent-lvl') or $default-transparent-lvl;
+  //$transparent-k: map_get($options, 'transparent-k') or $default-transparent-k;
+  $brightness-lvl: map_get($options, 'brightness-lvl') or $default-brightness-lvl;
+  
+  // theme variables
+  $colors: n-fill-object-with-defaults(map_get($theme-variables, 'colors') or (), $default-colors);
+  
+  // set colors
+  @each $color, $value in $colors {
+    $value-text: #fff;
+    @if (type_of($value) == list) {
+      $value-text: nth($value, 2);
+      $value: nth($value, 1);
+    } @else {
+      $value-text: n-get-contrast($value, #000, #fff);
+    }
+    
+    $transparentize-step: alpha($value) / ($transparent-lvl + 1);
+    $darken-step: (lightness($value) * 1%) / ($brightness-lvl + 1);
+    $lighten-step: ((100 - lightness($value)) * 1%) / ($brightness-lvl + 1);
+  
+    $result: n-map_set($result, --#{$color}, #{$value});
+    $result: n-map_set($result, --#{$color}-text, #{$value-text});
+    
+    @for $i from 1 through $transparent-lvl {
+      $result: n-map_set($result, --#{$color}-t-#{$i}, #{transparentize($value, $transparentize-step*$i)});
+    }
+    @for $i from 1 through $brightness-lvl {
+      $result: n-map_set($result, --#{$color}-d-#{$i}, #{darken($value, $darken-step*$i)});
+    }
+    @for $i from 1 through $brightness-lvl {
+      $result: n-map_set($result, --#{$color}-l-#{$i}, #{lighten($value, $lighten-step*$i)});
+    }
+  }
+  
+  
+  $empty: ();
+  
+  $typography: map_get($theme-variables, 'typography') or $empty;
+  @each $name, $value in $typography {
+    $result: n-map_set($result, --#{$name}, #{$value});
+  }
+  
+  $other: map_get($theme-variables, 'variables') or $empty;
+  @each $name, $value in $other {
+    $result: n-map_set($result, --#{$name}, #{$value});
+  }
+  
+  @return $result;
+}

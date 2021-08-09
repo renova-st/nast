@@ -1,0 +1,27 @@
+{
+  "name": "libs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build.lib": "npx webpack --env name=lib",
+    "build.nast": "npx webpack --env name=nast",
+    "build.api": "npx webpack --env name=nast-api",
+    "build.router": "npx webpack --env name=nast-router",
+    "build.store": "npx webpack --env name=nast-store",
+    "build.form": "npx webpack --env name=nast-form",
+    "build.auth": "npx webpack --env name=nast-auth",
+    "publish.nast": "npm run build.nast && npm run build.lib && npm publish nast",
+    "publish.api": "npm run build.api && npm publish nast-api",
+    "publish.router": "npm run build.router && npm publish nast-router",
+    "publish.store": "npm run build.store && npm publish nast-store",
+    "publish.form": "npm run build.form && npm publish nast-form",
+    "publish.auth": "npm run build.auth && npm publish nast-auth"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.42.0",
+    "webpack-cli": "^4.7.2"
+  }
+}

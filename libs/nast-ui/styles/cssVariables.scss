@@ -1,0 +1,7 @@
+@import "utils";
+
+:root {
+  @each $name, $value in n-calc-theme-vars() {
+    #{$name}: #{$value};
+  }
+}

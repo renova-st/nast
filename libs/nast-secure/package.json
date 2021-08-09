@@ -1,0 +1,28 @@
+{
+  "name": "nast-secure",
+  "version": "1.0.3",
+  "description": "Helpers for a fast codding",
+  "keywords": [
+    "vue",
+    "library",
+    "xss"
+  ],
+  "author": {
+    "name": "Alexey",
+    "email": "alexey@renova.st"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/renova-st/nast#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renova-st/nast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/renova-st/nast/issues"
+  },
+  "scripts": {},
+  "dependencies": {
+    "nast": "^1.0.*",
+    "xss": "^1.0.9"
+  }
+}
