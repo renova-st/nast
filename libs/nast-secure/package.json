@@ -1,11 +1,11 @@
 {
-  "name": "nast-helpers",
-  "version": "1.0.1",
+  "name": "nast-secure",
+  "version": "1.0.3",
   "description": "Helpers for a fast codding",
   "keywords": [
     "vue",
     "library",
-    "helpers"
+    "xss"
   ],
   "author": {
     "name": "Alexey",
@@ -21,5 +21,8 @@
     "url": "https://github.com/renova-st/nast/issues"
   },
   "scripts": {},
-  "dependencies": {}
+  "dependencies": {
+    "nast": "^1.0.*",
+    "xss": "^1.0.9"
+  }
 }

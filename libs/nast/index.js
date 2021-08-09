@@ -16,19 +16,17 @@ export default class NastCore extends NastLib {
    * @protected
    */
   static _defaultConfig = {}
-  
+
   /**
    * @param {Object} settings
    * @param {Object} libs
    * @return {this}
    */
-  static createApp(settings, libs = {}) {
+  static createApp(settings = {}, libs = {}) {
     if (!libs.store) libs.store = { NastStore, }
     if (!libs.router) libs.router = { NastRouter, }
-    console.log(settings.env)
-    return ''
-    global.$env = (key, def) => get(settings.env || {}, key, def)
-    global.$config = (key, def) => get(settings.config ? settings.config() : {}, key, def)
+    global.$env = (key, def) => this._configFn(settings.env ? settings.env : ENV, key, def)
+    global.$config = (key, def) => this._configFn(settings.config ? settings.config() : {}, key, def)
     global.$n = settings.fn ? settings.fn() : {}
     /** @var {RestApi} */
     global.$api = settings.api?.RestApi ? new (settings.api.RestApi)() : {}
@@ -39,7 +37,7 @@ export default class NastCore extends NastLib {
     }
     const store = new libs.store.NastStore(Vue, allStores, $config('store'))
     const router = new libs.router.NastRouter(Vue, settings.routes, store.store(), $config('router'))
-    
+
     // Globals
     global.$app = {
       store,
@@ -51,12 +49,9 @@ export default class NastCore extends NastLib {
       secure: libs.secure ? new (libs.secure.NastSecure)($config('secure')) : {},
     }
     // end Globals
-  
+
     Vue.mixin({
       computed: {
-        $env() {
-          return $env
-        },
         $config() {
           return $config
         },
@@ -83,8 +78,8 @@ export default class NastCore extends NastLib {
       render: (h) => h(this._appVue()),
     }).$mount('#app')
   }
-  
-  
+
+
   /**
    * Вызывает функцию store() в каждой библиотеке и возвращает объектом
    * @param {Object} libs
@@ -100,7 +95,7 @@ export default class NastCore extends NastLib {
       return result
     }, {})
   }
-  
+
   /**
    * Достает функцию vue из каждой библиотеки
    * @param {Object} libs
@@ -116,7 +111,7 @@ export default class NastCore extends NastLib {
       return result
     }, {})
   }
-  
+
   /**
    * @return {Object}
    * @protected
@@ -141,11 +136,11 @@ export default class NastCore extends NastLib {
             lang: 'ru',
           },
         }
-        
+
         // if ($config('app.manifest.use')) {
         //   meta.link.push({ rel: 'manifest', href: `${$config('app.baseUrl')}assets/static/manifest.json`, })
         // }
-        
+
         return meta
       },
       // props: [ 'libs', ],
@@ -158,6 +153,20 @@ export default class NastCore extends NastLib {
         ])
       },
     }
+  }
+
+  /**
+   * @param {Object} data
+   * @param {string} key
+   * @param {*} def
+   * @return {*}
+   * @protected
+   */
+  static _configFn(data, key = undefined, def = undefined) {
+    if (key === undefined) {
+      return data
+    }
+    return get(data, key, def)
   }
 }
 

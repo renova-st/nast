@@ -1,15 +1,13 @@
 {
-  "name": "nast-auth",
-  "version": "1.0.4",
-  "description": "Library for fast coding.",
+  "name": "nast-date",
+  "version": "1.0.3",
+  "description": "Library for a date management.",
   "keywords": [
     "library",
-    "auth",
-    "authorithation",
-    "authentication",
-    "login",
-    "token",
-    "jwt"
+    "date",
+    "time",
+    "datetime",
+    "moment"
   ],
   "author": {
     "name": "Alexey",
@@ -26,7 +24,8 @@
   },
   "scripts": {},
   "dependencies": {
-    "lodash": "^4.17.21",
-    "nast": "^1.0.2"
+    "lodash": "^4.17.*",
+    "moment": "^2.29.*",
+    "nast": "^1.0.*"
   }
 }

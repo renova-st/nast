@@ -1,11 +1,11 @@
 {
-  "name": "nast",
-  "version": "1.0.9",
-  "description": "Library for fast coding.",
+  "name": "nast-helpers",
+  "version": "1.0.2",
+  "description": "Helpers for a fast codding",
   "keywords": [
     "vue",
     "library",
-    "framework"
+    "helpers"
   ],
   "author": {
     "name": "Alexey",
@@ -22,12 +22,6 @@
   },
   "scripts": {},
   "dependencies": {
-    "lodash": "^4.17",
-    "nast-api": "^1.*",
-    "nast-auth": "^1.*",
-    "nast-form": "^1.*",
-    "nast-router": "^1.*",
-    "nast-store": "^1.*",
-    "vue": "^2.6"
+    "nast": "^1.0.*"
   }
 }

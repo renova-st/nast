@@ -1,72 +1,30 @@
-const start = require('./service/start')
+const utils = require('./utils')
+const fs = require('fs')
 
 /**
  *
  *
- * @param {object}api https://cli.vuejs.org/dev-guide/plugin-api.html#chainwebpack
- * @param {object}config vue.config.js
+ * @param {object} api https://cli.vuejs.org/dev-guide/plugin-api.html#chainwebpack
+ * @param {object} config vue.config.js
  */
 module.exports = (api, config) => {
-  const serve = api.service.commands.serve.fn
-  api.service.commands.serve.fn = (...args) => {
-    start(args, api, config)
-    serve(...args)
-  }
-  
-  const build = api.service.commands.build.fn
-  api.service.commands.build.fn = (...args) => {
-    start(args, api, config)
-    build(...args)
-  }
-  
-  // api.registerCommand(
-  //   'serve',
-  //   {
-  //     description: 'Run app in browser, only dev yet (ssr not enabled)',
-  //     usage: 'vue-cli-service start [options]',
-  //     options: {
-  //       '--mode': 'default: production, can be: development|production',
-  //       '--platform': 'default: web, can be: server|web|android|ios|mac|windows|linux',
-  //       '--env': 'default: production, can be: development|testing|alpha|beta|demo|production|whatever',
-  //       '--theme': 'default: web, can be: web|android|ios|mac|windows|linux|whatever',
-  //     },
-  //   },
-  //   (...args) => {
-  //     api.service.commands.serve.fn(...args)
-  //   },
-  // )
-  // api.registerCommand(
-  //   'build:web',
-  //   {
-  //     description: 'Build app for web',
-  //     usage: 'vue-cli-service build:web [options]',
-  //     options: {
-  //       '--mode': 'default: production, can be: development|production',
-  //       '--env': 'default: production, can be: development|testing|alpha|beta|demo|production|whatever',
-  //       '--theme': 'default: web, can be: web|android|ios|mac|windows|linux|whatever',
-  //       '--type': 'hash|prerender|sfa',
-  //     },
-  //   },
-  //   (args) => {
-  //     api.configureWebpack({})
-  //   }
-  // )
-  // api.registerCommand(
-  //   'build:android',
-  //   {
-  //     description: 'Build app for android platform',
-  //     usage: 'vue-cli-service build:android [options]',
-  //     options: {
-  //       '--theme': 'default: web, can be: web|android|ios|mac|windows|linux|whatever',
-  //       '--env': 'default: production, can be: develop|testing|demo|production|whatever',
-  //     },
-  //   },
-  //   (args) => {
-  //     api.configureWebpack({})
-  //   }
-  // )
-}
+  const env = utils.parseEnvFile(fs.readFileSync(api.resolve('.env'), 'utf8'))
 
-module.exports.defaultModes = {
-  serve: 'development',
+  api.chainWebpack((webpackConfig) => {
+    webpackConfig.plugin('define').tap((definitions) => {
+      definitions[0] = Object.assign(definitions[0], {
+        ENV: env,
+      })
+      return definitions
+    })
+
+    const fn = webpackConfig.module.rule('js').exclude.values()[0]
+    webpackConfig.module.rule('js').exclude
+      .clear()
+    webpackConfig.module.rule('js').exclude
+      .add((...args) => {
+        if (args[0].indexOf('node_modules\\nast') !== -1) return false
+        return fn(...args)
+      })
+  })
 }
