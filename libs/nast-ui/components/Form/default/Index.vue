@@ -1,5 +1,5 @@
 <template>
-  <form class="n-form" @submit="s_submit">
+  <form class="n-form" novalidate @submit="s_submit">
     <slot />
   </form>
 </template>
