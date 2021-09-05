@@ -40,12 +40,19 @@ export default class NastCore extends NastLib {
 
     // Globals
     global.$app = {
+      /** @var {NastStore} */
       store,
+      /** @var {NastRouter} */
       router,
+      /** @var {NastApi} */
       api: libs.api ? new (libs.api.NastApi)(libs.api.RequestBuilder, $config('api')) : {},
+      /** @var {NastAuth} */
       auth: libs.auth ? new (libs.auth.NastAuth)(store.store(), router.router(), $config('auth')) : {},
+      /** @var {NastDate} */
       date: libs.date ? new (libs.date.NastDate)($config('date')) : {},
+      /** @var {NastForm} */
       form: libs.form ? new (libs.form.NastForm)($config('form')) : {},
+      /** @var {NastSecure} */
       secure: libs.secure ? new (libs.secure.NastSecure)($config('secure')) : {},
     }
     // end Globals
