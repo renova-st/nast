@@ -272,9 +272,19 @@ export default {
       })
     },
     checkPage(page, size = 0, infinityPage = 0) {
+      page = Number(page)
       const maxPage = size ? Math.ceil((this.countTemp || this.count) / size) : this.maxPage
 
-      return checkPage(page, size, infinityPage, maxPage, this.value.page)
+      if (isNaN(page)) {
+        page = this.value.page
+      }
+      if (page < 1) {
+        page = 1
+      } else if (page > maxPage) {
+        page = maxPage
+      }
+
+      return page
     },
     checkInfinity(page, size = 0) {
       page = Number(page)
