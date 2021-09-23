@@ -37,6 +37,11 @@ export default class QueryParamsInterface {
    * @type {Array}
    */
   fields = []
+
+  /**
+   * @type {string}
+   */
+  key = ''
   
   /**
    * @type {boolean}

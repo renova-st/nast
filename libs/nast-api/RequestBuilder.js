@@ -97,6 +97,7 @@ export default class RequestBuilder {
     filter: {},
     with: {},
     fields: [],
+    key: undefined,
     tree: false,
     all: false,
     query: {},
@@ -435,6 +436,15 @@ export default class RequestBuilder {
     return this
   }
   
+  /**
+   * @param {string} key
+   * @return {RequestBuilder}
+   */
+  key(key) {
+    this._query.key = key
+    return this
+  }
+
   /**
    * @param {boolean} tree
    * @return {RequestBuilder}
