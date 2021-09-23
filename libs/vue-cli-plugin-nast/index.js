@@ -13,7 +13,7 @@ module.exports = (api, config) => {
   api.chainWebpack((webpackConfig) => {
     webpackConfig.plugin('define').tap((definitions) => {
       definitions[0] = Object.assign(definitions[0], {
-        ENV: env,
+        ENV: `${JSON.stringify(env)}`,
       })
       return definitions
     })

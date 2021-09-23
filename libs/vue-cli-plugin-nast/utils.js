@@ -8,7 +8,7 @@ const trim = require('lodash/trim')
  */
 module.exports.parseEnvFile = (env) => {
   if (env) {
-    return reduce(env.split('\r\n') || [], (result, item) => {
+    return reduce(env.split(/\r?\n/) || [], (result, item) => {
       const parts = item.split('=')
       let value = parts[1]
       value = trim(value)
@@ -16,9 +16,11 @@ module.exports.parseEnvFile = (env) => {
       if (value === 'true') value = true
       else if (value === 'false') value = false
       else {
-        value = `"${value}"`
+        value = `${value}`
       }
-      result[parts[0]] = value
+      if (parts[0]) {
+        result[parts[0]] = value
+      }
 
       return result
     }, {})
