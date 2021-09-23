@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "defaults";
 
 $n-grid-breakpoints: $default-grid;
@@ -42,7 +44,7 @@ $n-grid-breakpoints: $default-grid;
 }
 
 @function n-get-yiq($color) {
-  @return ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) / 1000;
+  @return ((red($color) * 299) + (green($color) * 587) + (blue($color) * 114)) * 0.001;
 }
 
 @function n-get-contrast($color, $black, $white) {
@@ -125,9 +127,9 @@ $n-grid-breakpoints: $default-grid;
       $value-text: n-get-contrast($value, #000, #fff);
     }
     
-    $transparentize-step: alpha($value) / ($transparent-lvl + 1);
-    $darken-step: (lightness($value) * 1%) / ($brightness-lvl + 1);
-    $lighten-step: ((100 - lightness($value)) * 1%) / ($brightness-lvl + 1);
+    $transparentize-step: math.div(alpha($value), $transparent-lvl + 1);
+    $darken-step: math.div(lightness($value) * 1%, $brightness-lvl + 1);
+    $lighten-step: math.div((100 - lightness($value)) * 1%, $brightness-lvl + 1);
   
     $result: n-map_set($result, --#{$color}, #{$value});
     $result: n-map_set($result, --#{$color}-text, #{$value-text});

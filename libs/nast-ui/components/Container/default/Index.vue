@@ -14,13 +14,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @use "sass:math";
   @import "../../../styles/scssVariables";
   
   .n-container {
     width: 100%;
     max-width: calc(100% - #{$grid-padding});
-    padding-right: ($grid-padding / 2);
-    padding-left: ($grid-padding / 2);
+    padding-right: math.div($grid-padding, 2);
+    padding-left: math.div($grid-padding, 2);
     margin-right: auto;
     margin-left: auto;
     
