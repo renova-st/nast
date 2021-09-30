@@ -7,6 +7,18 @@ module.exports = {
   configureWebpack: {
     devtool: 'source-map',
   },
+  transpileDependencies: [
+    'nast',
+    'nast-api',
+    'nast-auth',
+    'nast-date',
+    'nast-form',
+    'nast-helpers',
+    'nast-router',
+    'nast-secure',
+    'nast-store',
+    'nast-ui',
+  ],
   chainWebpack: (config) => {
     config.entry('app')
       .clear()
