@@ -1,7 +1,7 @@
 <template>
   <div :class="[ 'n-tabs', {'n-disabled': disabled}, ]">
     <div v-for="tab in data" :key="tab.name" :class="[ 'n-tab', {active: tab.name === s_active}, ]" @click="s_click($event, tab.name)">
-      <slot name="tab">{{ tab.title }}</slot>
+      <slot name="tab" :item="tab">{{ tab.title }}</slot>
     </div>
   </div>
 </template>
