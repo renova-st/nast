@@ -54,6 +54,8 @@ export default class NastCore extends NastLib {
       form: libs.form ? new (libs.form.NastForm)($config('form')) : {},
       /** @var {NastSecure} */
       secure: libs.secure ? new (libs.secure.NastSecure)($config('secure')) : {},
+      /** @var {NastUi} */
+      ui: libs.ui ? new (libs.ui.NastUi)(store.store(), $config('ui')) : {},
     }
     // end Globals
 
