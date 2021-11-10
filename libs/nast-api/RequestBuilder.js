@@ -482,12 +482,15 @@ export default class RequestBuilder {
       })
       url = '/' + trim(parts.join(''), '/')
     }
-  
+
     let query = {
-      ...this._query.query,
       ...this._query,
     }
     delete(query.query)
+    query = {
+      ...query,
+      ...this._query.query,
+    }
     query = this.constructor._serialize(query)
     
     const version = this._version ? `/v${this._version}` : ''
