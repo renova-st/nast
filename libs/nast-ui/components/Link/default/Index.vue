@@ -1,43 +1,44 @@
 <template>
   <span
-    v-if="isSpan"
-    :class="classes"
-    @click="s_click"
+      v-if="isSpan"
+      :class="classes"
+      @click="s_click"
   ><slot /></span>
-  
+
   <a
-    v-else-if="isScrollTo"
-    :aria-label="s_label"
-    :href="href"
-    :class="classes"
-    @click="scrollTo"
+      v-else-if="isScrollTo"
+      :aria-label="s_label"
+      :href="href"
+      :class="classes"
+      @click="scrollTo"
   ><slot /></a>
-  
+
   <router-link
-    v-else-if="type === 'internal'"
-    :to="s_route"
-    :active-class="activeClass"
-    :exact-active-class="exactActiveClass"
-    :aria-label="s_label"
-    :class="classes"
-    @click.native="s_click"
+      v-else-if="type === 'internal'"
+      :to="s_route"
+      :active-class="activeClass"
+      :exact-active-class="exactActiveClass"
+      :aria-label="s_label"
+      :class="classes"
+      @click.native="s_click"
   >
     <slot />
   </router-link>
-  
+
   <a
-    v-else
-    :href="getHrefByType()"
-    :target="target"
-    :aria-label="s_label"
-    :class="classes"
-    @click="s_click"
+      v-else
+      :href="getHrefByType()"
+      :target="target"
+      :aria-label="s_label"
+      :class="classes"
+      @click="s_click"
   ><slot /></a>
 </template>
 
 <script>
 import size from 'lodash/size'
 import isString from 'lodash/isString'
+import each from 'lodash/each'
 import props from './../props'
 
 export default {
@@ -71,7 +72,7 @@ export default {
           return this.$router.resolve(this.s_route).href
         }
       }
-      
+
       return ''
     },
     hash() {
@@ -82,7 +83,17 @@ export default {
         return true
       }
       const name = this.s_route ? this.s_route.name : undefined
-      return this.$route.name === name
+      const params = this.s_route ? this.s_route.params : {}
+
+      if (this.$route.name === name) {
+        let isSame = true
+        each(this.$route.params, (value, key) => {
+          if (value !== params[key]) isSame = false
+        })
+        return isSame
+      } else {
+        return false
+      }
     },
   },
   watch: {
@@ -96,11 +107,11 @@ export default {
   methods: {
     scrollTo(e) {
       e.preventDefault()
-      
+
       this.s_click(e)
-  
+
       window.history.pushState(null, null, this.hash ? `#${this.hash}` : ' ')
-      
+
       this.go()
     },
     goIfCurrentRoute() {
@@ -119,7 +130,7 @@ export default {
       Array.prototype.forEach.call(document.getElementsByClassName(this.offsetClass), (item) => {
         offset += item.offsetHeight
       })
-  
+
       const target = document.getElementById(this.hash)
       window.scrollTo({
         top: target ? target.offsetTop - offset: 0,
@@ -141,7 +152,7 @@ export default {
           return `${this.type}:${value}`
         },
       }
-      
+
       const value = this.to || this.$slots.default[0].text
       const func = types[this.type] || types['other']
       return func(value)
@@ -155,10 +166,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .n-link {
-    &.n-wide {
-      display: block;
-      width: 100%;
-    }
+.n-link {
+  &.n-wide {
+    display: block;
+    width: 100%;
   }
+}
 </style>
